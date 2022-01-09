@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  #adding tag as id would not be available
+  - docker build -t vardhmanhundia/docker-react -f Dockerfile.dev . 
+
+script:
+  - docker run vardhmanhundia/docker-react npm run test -- --coverage
